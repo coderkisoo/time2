@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data class="MainActivityBinding">
 
-        <import type="time.kisoo.time.time2.viewmodel.MainActivityVM" />
+        <import type="time.kisoo.time.time2.viewmodel.activity.MainActivityVM" />
 
         <variable
             name="viewModel"
@@ -21,6 +22,7 @@
             android:layout_height="match_parent">
 
             <include
+                bind:title="@{viewModel.title}"
                 android:id="@+id/rl_title"
                 layout="@layout/main_toolbar"
                 app:layout_collapseMode="pin"
@@ -41,6 +43,8 @@
             android:layout_gravity="start"
             android:background="@android:color/white"
             android:checkableBehavior="single"
+            app:ItemIconTintList="@{null}"
+            app:headerLayout="@layout/drawer_header"
             app:NavigationItemSelectedListener="@{viewModel.listener}"
             app:menu="@menu/navigation_menu" />
 

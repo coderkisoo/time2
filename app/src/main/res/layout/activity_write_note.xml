@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="time.kisoo.time.time2.viewmodel.WriteNoteActivityVM" />
+            type="time.kisoo.time.time2.viewmodel.activity.WriteNoteActivityVM" />
 
     </data>
 

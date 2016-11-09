@@ -1,4 +1,4 @@
-package time.kisoo.time.time2.viewmodel;
+package time.kisoo.time.time2.viewmodel.fragment;
 
 import javax.inject.Inject;
 

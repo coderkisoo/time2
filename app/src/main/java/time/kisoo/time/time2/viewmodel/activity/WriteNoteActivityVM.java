@@ -1,4 +1,4 @@
-package time.kisoo.time.time2.viewmodel;
+package time.kisoo.time.time2.viewmodel.activity;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
