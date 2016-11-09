@@ -15,10 +15,15 @@
 * 依照Material Design-Google推行的材料设计，来对整个app的界面进行规范（design包）
 
 * 使用了rxJava这类函数式编程框架
+
 * 图片加载库使用了glide，没有fresco那么庞大
+
 * lambda
+
 * 主题更换使用bilibili的magicasakura
+
 * 后台决定使用Bmob
+
 * 持久化数据存储使用realm，号称远超sqlite的效率，实际使用并未发现，其数据绑定的思想与databinding的思想吻合
 ___
 
@@ -31,5 +36,7 @@ ___
 ###2016.11.10：
 
  * 更新了左侧的menu色彩，及与fragment的映射
+ 
  * 更改了架构（暂定）
+ 
  * 重构了部分代码
