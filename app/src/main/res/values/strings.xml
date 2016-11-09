@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">time2</string>
+    <string name="more">编辑</string>
+    <string name="watch">查看</string>
+    <string name="delete" >删除</string>
+    <string name="back">返回</string>
+    <string name="write_note">记笔记</string>
+    <string name="known">我知道了</string>
+    <string name="new_event">新建日程</string>
+    <string name="new_note">新建笔记</string>
+    <string name="note_show">我的记录</string>
+    <string name="trash_can">垃圾箱</string>
+    <string name="navigation_group_1">分组1</string>
+    <string name="example">例子</string>
+    <string name="navigation_group_2">分组2</string>
+    <string name="see_more">更多</string>
+    <string name="setting">设置</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_1"
+        android:icon="@mipmap/icon_notes"
+        android:title="@string/note_show" />
+    <item android:title="@string/navigation_group_1">
+        <menu>
+            <item
+                android:id="@+id/menu_trash_can"
+                android:title="@string/trash_can"
+                android:icon="@mipmap/icon_trash_can"/>
+            <item android:title="@string/example"
+                android:id="@+id/menu_item_3"/>
+        </menu>
+    </item>
+    <item android:title="@string/navigation_group_2">
+        <menu>
+            <item android:title="@string/see_more"
+                android:id="@+id/menu_item_more"
+                android:icon="@mipmap/icon_more"/>
+            <item android:title="@string/setting"
+                android:id="@+id/menu_item_setting"
+                android:icon="@mipmap/icon_setting"/>
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="MainActivityBinding">
+
+        <import type="time.kisoo.time.time2.viewmodel.MainActivityVM" />
+
+        <variable
+            name="viewModel"
+            type="MainActivityVM" />
+    </data>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/dl_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/rl_title"
+                layout="@layout/main_toolbar"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            <FrameLayout
+                android:id="@+id/fl_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="time.kisoo.time.time2.view.customview.FixScrollingFooterBehavior" />
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nv_drawer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@android:color/white"
+            android:checkableBehavior="single"
+            app:NavigationItemSelectedListener="@{viewModel.listener}"
+            app:menu="@menu/navigation_menu" />
+
+        <!--app:headerLayout="@layout/nav_header"-->
+    </android.support.v4.widget.DrawerLayout>
+
+</layout>

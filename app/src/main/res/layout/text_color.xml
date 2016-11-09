@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="time.kisoo.time.time2.viewmodel.WriteNoteActivityVM" />
+    </data>
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fam_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:longClickable="true"
+        app:OnMenuButtonLongClickListener="@{viewModel.listener}"
+        app:MenuButtonColorNormal="@{viewModel.color}"
+        app:MenuButtonColorPressed="@{viewModel.color}"
+        app:menu_icon="@mipmap/icon_font_color"
+        fab:menu_fab_hide_animation="@anim/fab_slide_out_to_right"
+        fab:menu_fab_show_animation="@anim/fab_slide_in_from_right"
+        fab:menu_fab_size="mini"
+        fab:menu_openDirection="down">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(theView)->viewModel.setBlack(theView)}"
+            app:fab_colorNormal="@color/colorBlack"
+            app:fab_colorPressed="@color/colorBlack"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(theView)->viewModel.setBlue(theView)}"
+            app:fab_colorNormal="@color/colorBlue"
+            app:fab_colorPressed="@color/colorBlue"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{(theView)->viewModel.setRed(theView)}"
+            app:fab_colorNormal="@color/colorRed"
+            app:fab_colorPressed="@color/colorRed"
+            fab:fab_size="mini" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</layout>

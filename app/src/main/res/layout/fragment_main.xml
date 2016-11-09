@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data class="MainFragmentBinding">
+
+        <import type="time.kisoo.time.time2.view.iview.IMainFragment" />
+
+        <variable
+            name="fragmentView"
+            type="IMainFragment" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_content"
+            app:addOnScrollListener="@{fragmentView.getListener()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rl_title"
+            android:scrollbars="vertical" />
+
+        <include
+            android:id="@+id/rl_fab"
+            layout="@layout/main_fab"
+            bind:fragmentView="@{fragmentView}" />
+
+
+    </RelativeLayout>
+
+</layout>
+

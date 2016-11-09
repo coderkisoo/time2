@@ -1,0 +1,60 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="MainItemBinding">
+
+        <variable
+            name="controller"
+            type="time.kisoo.time.time2.view.adapter.MainPageAdapter" />
+
+        <variable
+            name="dimen"
+            type="cn.mycommons.androidsizeutil.DimenUtil" />
+
+        <variable
+            name="item"
+            type="time.kisoo.time.time2.model.DateInfo" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        style="@style/DataBindingView"
+        android:layout_margin="@dimen/dp_4">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_8">
+
+            <ImageView
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:layout_alignParentRight="true"
+                android:onClick="@{(theView)->controller.click(item,theView)}"
+                android:src="@mipmap/icon_more" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{item.message.title}"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/sp_18" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                style="@style/DataBindingView"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@{item.message.message}"
+                android:textSize="@dimen/sp_14" />
+
+            <GridView
+                android:id="@+id/gv_photos"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_100"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>

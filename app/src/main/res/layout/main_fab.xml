@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="time.kisoo.time.time2.view.iview.IMainFragment" />
+
+        <variable
+            name="fragmentView"
+            type="IMainFragment" />
+    </data>
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fam_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        fab:menu_fab_hide_animation="@anim/hide_anim"
+        fab:menu_fab_show_animation="@anim/show_anim"
+        fab:menu_fab_size="normal"
+        fab:menu_icon="@mipmap/fab_more">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{theView->fragmentView.note(theView)}"
+            android:src="@mipmap/fab_more"
+            fab:fab_label="@string/new_note"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/fab_more"
+            fab:fab_label="Menu item 2"
+            fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_item3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/fab_more"
+            fab:fab_label="Menu item 3"
+            fab:fab_size="mini" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</layout>

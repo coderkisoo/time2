@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data class="WriteNoteBinding">
+
+        <variable
+            name="viewModel"
+            type="time.kisoo.time.time2.viewmodel.WriteNoteActivityVM" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/rl_main"
+            layout="@layout/main_toolbar"
+            bind:visible="@{viewModel.visibility}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="@dimen/dp_16"
+            android:fillViewport="true"
+            android:paddingTop="?attr/actionBarSize">
+
+            <time.kisoo.time.time2.view.customview.RichEditText
+                android:id="@+id/et_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="top|left"
+                android:lineSpacingExtra="@dimen/line_spacing"
+                android:text="@{viewModel.content}" />
+        </ScrollView>
+
+        <include
+            android:id="@+id/rl_fab_color"
+            layout="@layout/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/rl_main"
+            bind:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/rl_fab_size"
+            layout="@layout/fab_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_main"
+            android:layout_toLeftOf="@id/rl_fab_color"
+            bind:viewModel="@{viewModel}" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_main"
+            android:layout_toLeftOf="@id/rl_fab_size"
+            android:onClick="@{(theView)->viewModel.addPhoto(theView)}"
+            android:src="@mipmap/icon_add_photo"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            app:fab_size="mini" />
+    </RelativeLayout>
+
+</layout>
