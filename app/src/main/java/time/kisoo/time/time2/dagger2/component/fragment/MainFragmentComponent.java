@@ -1,6 +1,4 @@
-package time.kisoo.time.time2.dagger2.component;
-
-import time.kisoo.time.time2.view.fragment.MainFragment;
+package time.kisoo.time.time2.dagger2.component.fragment;
 
 /**
  * Created by KiSoo on 2016/11/9.
@@ -11,5 +9,5 @@ import time.kisoo.time.time2.view.fragment.MainFragment;
 //        modules = {MainActivityModule.class, MainFragmentModule.class}
 //)
 public interface MainFragmentComponent {
-    void inject(MainFragment fragment);
+//    void inject(MainFragment fragment);
 }

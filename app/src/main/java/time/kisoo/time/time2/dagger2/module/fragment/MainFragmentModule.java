@@ -1,4 +1,4 @@
-package time.kisoo.time.time2.dagger2.module;
+package time.kisoo.time.time2.dagger2.module.fragment;
 
 /**
  * Created by KiSoo on 2016/11/9.

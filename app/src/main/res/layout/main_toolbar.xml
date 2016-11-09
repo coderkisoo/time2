@@ -7,6 +7,10 @@
             name="visible"
             type="int" />
 
+        <variable
+            name="title"
+            type="String"/>
+
     </data>
 
     <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -31,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorWhite"
+                android:text="@{title}"
                 android:textSize="@dimen/sp_22"
                 android:textStyle="normal" />
         </android.support.v7.widget.Toolbar>

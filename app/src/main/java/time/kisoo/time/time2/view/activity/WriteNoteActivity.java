@@ -14,12 +14,12 @@ import javax.inject.Inject;
 
 import time.kisoo.time.time2.R;
 import time.kisoo.time.time2.app.App;
-import time.kisoo.time.time2.dagger2.component.DaggerWriteNodeActivityComponent;
-import time.kisoo.time.time2.dagger2.module.WriteNoteActivityModule;
+import time.kisoo.time.time2.dagger2.component.activity.DaggerWriteNodeActivityComponent;
+import time.kisoo.time.time2.dagger2.module.activity.WriteNoteActivityModule;
 import time.kisoo.time.time2.databinding.WriteNoteBinding;
 import time.kisoo.time.time2.util.MyTextUtil;
 import time.kisoo.time.time2.view.base.BaseActivity;
-import time.kisoo.time.time2.viewmodel.WriteNoteActivityVM;
+import time.kisoo.time.time2.viewmodel.activity.WriteNoteActivityVM;
 
 /**
  * Created by KiSoo on 2016/11/2.
@@ -42,7 +42,7 @@ public class WriteNoteActivity extends BaseActivity<WriteNoteBinding> implements
     }
 
     private void initToolbar() {
-        initToolbar(binding.rlMain.tbMain, getString(R.string.write_note),true);
+        initToolbar(binding.rlMain.tbMain, true);
     }
 
     @Override
