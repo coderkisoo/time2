@@ -46,13 +46,18 @@ public class WriteNoteActivity extends BaseActivity<WriteNoteBinding> implements
     }
 
     @Override
+    protected void bindView() {
+        super.bindView();
+        binding.setViewModel(writeNoteActivityVM);
+    }
+
+    @Override
     protected void initModelWithDagger2() {
         DaggerWriteNodeActivityComponent.builder()
                 .appComponent(((App) getApplication()).component())
                 .writeNoteActivityModule(new WriteNoteActivityModule(this, new SpannableStringBuilder("")))
                 .build()
                 .inject(this);
-        binding.setViewModel(writeNoteActivityVM);
     }
 
 

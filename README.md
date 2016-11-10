@@ -29,11 +29,20 @@ ___
 
 ###暂定以上
 
+##已知bug：
+ * 点击mainFragment上面的imageView无反应
+
 ___
 
 ##更新：
 
-###2016.11.10：
+###2016.11.10-17:58:
+
+ * 将settingFragment和mainFragment与viewModel使用dagger2依赖注入
+
+ * 修改了BaseViewModel以及BaseFragmentModule
+
+###2016.11.10-1:30：
 
  * 更新了左侧的menu色彩，及与fragment的映射
  

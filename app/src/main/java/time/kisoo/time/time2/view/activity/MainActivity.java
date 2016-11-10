@@ -1,8 +1,8 @@
 package time.kisoo.time.time2.view.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ import rx.Observable;
 import time.kisoo.time.time2.R;
 import time.kisoo.time.time2.app.App;
 import time.kisoo.time.time2.dagger2.component.activity.DaggerMainActivityComponent;
+import time.kisoo.time.time2.dagger2.component.activity.MainActivityComponent;
 import time.kisoo.time.time2.dagger2.module.activity.MainActivityModule;
 import time.kisoo.time.time2.databinding.MainActivityBinding;
 import time.kisoo.time.time2.view.base.BaseActivity;
@@ -25,8 +26,9 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
     @Inject
     MainActivityVM activityVM;
 
-    private List<Fragment> fragments;
-    private Fragment currentFragment;
+    public MainActivityComponent component;
+    private List<android.support.v4.app.Fragment> fragments;
+    private android.support.v4.app.Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +52,14 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
      * @param itemId
      */
     public void chooseFragment(int itemId) {
-        rx.Observable
+        Observable
                 .create((Observable.OnSubscribe<Integer>) subscriber -> subscriber.onNext(itemId))
                 .map(this::chooseFragmentWithId)
                 .map(this::structTransaction)
+                .doOnCompleted(() -> binding.dlDrawer.closeDrawer(Gravity.LEFT))
                 .subscribe(FragmentTransaction::commitAllowingStateLoss);
     }
+
 
     /**
      * 构造fragmentTransaction
@@ -63,9 +67,9 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
      * @param fragment
      * @return
      */
-    private FragmentTransaction structTransaction(Fragment fragment) {
+    private FragmentTransaction structTransaction(android.support.v4.app.Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if (fragment == currentFragment)
+        if (fragment == this.currentFragment)
             return transaction;
         if (fragment.isAdded()) {
             transaction.show(fragment);
@@ -74,7 +78,7 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
         }
         if (currentFragment != null)
             transaction.hide(currentFragment);
-        currentFragment = fragment;
+        this.currentFragment = fragment;
         return transaction;
     }
 
@@ -84,7 +88,7 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
      * @param id
      * @return
      */
-    private Fragment chooseFragmentWithId(Integer id) {
+    private android.support.v4.app.Fragment chooseFragmentWithId(Integer id) {
         switch (id) {
             case R.id.menu_item_1:
                 return fragments.get(0);
@@ -101,11 +105,11 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
 
     @Override
     protected void initModelWithDagger2() {
-        DaggerMainActivityComponent.builder()
+        component = DaggerMainActivityComponent.builder()
                 .appComponent(((App) getApplication()).component())
                 .mainActivityModule(new MainActivityModule(this))
-                .build()
-                .injectActivity(this);
+                .build();
+        component.injectActivity(this);
     }
 
 

@@ -31,7 +31,6 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         context = this;
         initModelWithDagger2();
         bindView();
-
     }
 
     /**

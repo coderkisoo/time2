@@ -21,15 +21,21 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, bindContentView(),container,false);
+        binding = DataBindingUtil.inflate(inflater, layoutId(),container,false);
+        bindView();
         return binding.getRoot();
     }
+
+    protected abstract void bindView();
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
+        initModelWithDagger2();
     }
 
-    protected abstract int bindContentView();
+    protected abstract void initModelWithDagger2();
+
+    protected abstract int layoutId();
 }

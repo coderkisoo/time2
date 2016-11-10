@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_item_1"
-        android:checked="true"
+        android:checkable="true"
         android:icon="@mipmap/icon_notes"
         android:title="@string/note_show" />
     <item android:title="@string/navigation_group_1">

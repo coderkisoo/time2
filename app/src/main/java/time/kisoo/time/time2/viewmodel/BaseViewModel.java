@@ -1,22 +1,13 @@
 package time.kisoo.time.time2.viewmodel;
 
-import time.kisoo.time.time2.view.base.BaseActivity;
+import android.databinding.BaseObservable;
 
 /**
  * Created by KiSoo on 2016/11/7.
  */
 
 
-public class BaseViewModel<T extends BaseActivity> {
-    public T context;
+public class BaseViewModel extends BaseObservable {
 
-    public BaseViewModel(T activity) {
-        this.context = activity;
-    }
-
-
-    T providesActivity() {
-        return context;
-    }
 
 }

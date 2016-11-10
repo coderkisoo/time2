@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
 
     <data>
 
-        <import type="time.kisoo.time.time2.view.iview.IMainFragment" />
+
+        <import type="time.kisoo.time.time2.viewmodel.fragment.MainFragmentVM" />
 
         <variable
-            name="fragmentView"
-            type="IMainFragment" />
+            name="viewModel"
+            type="MainFragmentVM" />
     </data>
 
 
@@ -30,7 +30,7 @@
             android:id="@+id/menu_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{theView->fragmentView.note(theView)}"
+            android:onClick="@{theView->viewModel.note(theView)}"
             android:src="@mipmap/fab_more"
             fab:fab_label="@string/new_note"
             fab:fab_size="mini" />

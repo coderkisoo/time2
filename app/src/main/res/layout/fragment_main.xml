@@ -5,29 +5,32 @@
 
     <data class="MainFragmentBinding">
 
-        <import type="time.kisoo.time.time2.view.iview.IMainFragment" />
+        <import type="time.kisoo.time.time2.viewmodel.fragment.MainFragmentVM" />
 
         <variable
-            name="fragmentView"
-            type="IMainFragment" />
+            name="viewModel"
+            type="MainFragmentVM" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_content"
-            app:addOnScrollListener="@{fragmentView.getListener()}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/rl_title"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            app:adapter="@{viewModel.adapter}"
+            app:layoutManager="@{viewModel.manager}"
+            app:itemAnimator="@{viewModel.animator}"
+            app:addOnScrollListener="@{viewModel.listener}" />
 
         <include
             android:id="@+id/rl_fab"
             layout="@layout/main_fab"
-            bind:fragmentView="@{fragmentView}" />
-
+            bind:viewModel="@{viewModel}" />
 
     </RelativeLayout>
 
