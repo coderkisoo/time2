@@ -36,6 +36,12 @@ ___
 
 ##更新：
 
+###2016.11.17-0:54:
+
+ * 设置界面的item彻底解耦，使用了三种不同的View，可以点击的，可以滑动的，以及空的。
+
+ * bindingAdapter 使用Glide来加载imageView上的图片。
+
 ###2016.11.10-17:58:
 
  * 将settingFragment和mainFragment与viewModel使用dagger2依赖注入

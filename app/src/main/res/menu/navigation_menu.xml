@@ -21,13 +21,13 @@
     <item android:title="@string/navigation_group_2">
         <menu>
             <item
-                android:id="@+id/menu_item_more"
-                android:icon="@mipmap/icon_more"
-                android:title="@string/see_more" />
-            <item
                 android:id="@+id/menu_item_setting"
                 android:icon="@mipmap/icon_setting"
                 android:title="@string/setting" />
+            <item
+                android:id="@+id/menu_item_more"
+                android:icon="@mipmap/icon_more"
+                android:title="@string/see_more" />
         </menu>
     </item>
 

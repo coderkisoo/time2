@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data class="ItemClickBinding">
+
+        <import type="android.view.View" />
+
+        <import type="time.kisoo.time.time2.viewmodel.adapter.ItemClick" />
+
+        <variable
+            name="viewModel"
+            type="ItemClick" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_64"
+        android:background="@color/colorWhite"
+        android:onClick="@{theView->viewModel.clickItem(theView)}">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:padding="@dimen/dp_4"
+            app:imgSrc="@{viewModel.imgSrc}" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="@{viewModel.settingInfo}"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:id="@+id/iv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="@{viewModel.description}"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/sp_14" />
+
+        <ImageView
+            android:id="@+id/iv_gone"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            app:imgSrc="@{viewModel.imgSrc}" />
+
+    </RelativeLayout>
+
+</layout>
+

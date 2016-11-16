@@ -40,10 +40,11 @@ public class MainFragment extends BaseFragment<MainFragmentBinding> implements I
         this.component.injectActivity((MainActivity) context);
     }
 
-
+    /**
+     * 是否展示floatActionMenu
+     * @param show
+     */
     public void showFab(boolean show) {
-        if (binding.rlFab.famMenu.isAnimated())
-            return;
         if (show) {
             binding.rlFab.famMenu.hideMenu(true);
         } else {

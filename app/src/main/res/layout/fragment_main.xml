@@ -25,7 +25,8 @@
             app:adapter="@{viewModel.adapter}"
             app:layoutManager="@{viewModel.manager}"
             app:itemAnimator="@{viewModel.animator}"
-            app:addOnScrollListener="@{viewModel.listener}" />
+            app:addOnScrollListener="@{viewModel.listener}"
+            />
 
         <include
             android:id="@+id/rl_fab"

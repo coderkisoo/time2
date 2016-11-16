@@ -18,6 +18,7 @@ import time.kisoo.time.time2.dagger2.module.activity.MainActivityModule;
 import time.kisoo.time.time2.databinding.MainActivityBinding;
 import time.kisoo.time.time2.view.base.BaseActivity;
 import time.kisoo.time.time2.view.fragment.MainFragment;
+import time.kisoo.time.time2.view.fragment.SettingFragment;
 import time.kisoo.time.time2.viewmodel.activity.MainActivityVM;
 
 
@@ -44,6 +45,7 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
     private void initFragments() {
         fragments = new ArrayList<>();
         fragments.add(new MainFragment());
+        fragments.add(new SettingFragment());
     }
 
     /**
@@ -56,7 +58,7 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
                 .create((Observable.OnSubscribe<Integer>) subscriber -> subscriber.onNext(itemId))
                 .map(this::chooseFragmentWithId)
                 .map(this::structTransaction)
-                .doOnCompleted(() -> binding.dlDrawer.closeDrawer(Gravity.LEFT))
+                .doOnNext(fragmentTransaction -> binding.dlDrawer.closeDrawer(Gravity.LEFT))
                 .subscribe(FragmentTransaction::commitAllowingStateLoss);
     }
 
@@ -92,6 +94,8 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
         switch (id) {
             case R.id.menu_item_1:
                 return fragments.get(0);
+            case R.id.menu_item_setting:
+                return fragments.get(1);
             default:
                 return fragments.get(0);
         }

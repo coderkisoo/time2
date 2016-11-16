@@ -15,4 +15,7 @@
     <string name="navigation_group_2">分组2</string>
     <string name="see_more">更多</string>
     <string name="setting">设置</string>
+    <string name="item_update">自动更新</string>
+    <string name="description_update">是否开启更新，建议开启</string>
+
 </resources>
