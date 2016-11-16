@@ -26,7 +26,7 @@
             android:background="@color/colorPrimary"
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@mipmap/icon_menu"
+            app:navigationIcon="@mipmap/icon_back"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <TextView

@@ -99,6 +99,11 @@ public class WriteNoteActivity extends BaseActivity<WriteNoteBinding> implements
         return R.layout.activity_write_note;
     }
 
+    @Override
+    public void home() {
+        super.home();
+        finish();
+    }
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

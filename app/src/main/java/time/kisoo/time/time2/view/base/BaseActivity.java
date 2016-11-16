@@ -71,10 +71,14 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                finish();
+                home();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void home(){
+
     }
 
 

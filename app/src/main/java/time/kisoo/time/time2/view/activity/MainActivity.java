@@ -1,6 +1,7 @@
 package time.kisoo.time.time2.view.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 
@@ -28,8 +29,8 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
     MainActivityVM activityVM;
 
     public MainActivityComponent component;
-    private List<android.support.v4.app.Fragment> fragments;
-    private android.support.v4.app.Fragment currentFragment;
+    private List<Fragment> fragments;
+    private Fragment currentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,12 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
         fragments = new ArrayList<>();
         fragments.add(new MainFragment());
         fragments.add(new SettingFragment());
+    }
+
+    @Override
+    public void home() {
+        super.home();
+        binding.dlDrawer.openDrawer(Gravity.LEFT);
     }
 
     /**
@@ -118,7 +125,7 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
 
 
     private void initToolbar() {
-        initToolbar(binding.rlTitle.tbMain, false);
+        initToolbar(binding.rlTitle.tbMain, true);
     }
 
     @Override

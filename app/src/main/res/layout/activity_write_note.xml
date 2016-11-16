@@ -17,7 +17,7 @@
 
         <include
             android:id="@+id/rl_main"
-            layout="@layout/main_toolbar"
+            layout="@layout/back_toolbar"
             bind:visible="@{viewModel.visibility}" />
 
         <ScrollView
