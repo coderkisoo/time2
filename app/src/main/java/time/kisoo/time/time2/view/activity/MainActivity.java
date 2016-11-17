@@ -51,7 +51,6 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
 
     @Override
     public void home() {
-        super.home();
         binding.dlDrawer.openDrawer(Gravity.LEFT);
     }
 
@@ -61,6 +60,7 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
      * @param itemId
      */
     public void chooseFragment(int itemId) {
+
         Observable
                 .create((Observable.OnSubscribe<Integer>) subscriber -> subscriber.onNext(itemId))
                 .map(this::chooseFragmentWithId)

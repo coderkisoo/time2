@@ -30,11 +30,17 @@ ___
 ###暂定以上
 
 ##已知bug：
- * 点击mainFragment上面的imageView无反应
+ * ~~点击mainFragment上面的imageView无反应~~
 
 ___
 
 ##更新：
+
+###2016.11.17-16:42:
+
+ * 修改了~~点击mainFragment上面的imageView无反应~~的bug。
+ * 新增了SettingVM
+
 
 ###2016.11.17-0:54:
 

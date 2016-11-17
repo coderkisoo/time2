@@ -14,6 +14,7 @@ import javax.inject.Inject;
 
 import time.kisoo.time.time2.R;
 import time.kisoo.time.time2.app.App;
+import time.kisoo.time.time2.common.config.Constant;
 import time.kisoo.time.time2.dagger2.component.activity.DaggerWriteNodeActivityComponent;
 import time.kisoo.time.time2.dagger2.module.activity.WriteNoteActivityModule;
 import time.kisoo.time.time2.databinding.WriteNoteBinding;
@@ -27,8 +28,6 @@ import time.kisoo.time.time2.viewmodel.activity.WriteNoteActivityVM;
 
 public class WriteNoteActivity extends BaseActivity<WriteNoteBinding> implements TextWatcher {
 
-
-    public static final String KEY_CONTENT = "KEY_CONTENT_WRITE_NOTE";
 
     @Inject
     WriteNoteActivityVM writeNoteActivityVM;
@@ -65,7 +64,7 @@ public class WriteNoteActivity extends BaseActivity<WriteNoteBinding> implements
      * use the content(String) from intent to build the editText
      */
     private void initContent() {
-        String contents = getIntent().getStringExtra(KEY_CONTENT);
+        String contents = getIntent().getStringExtra(Constant.KEY_CONTENT);
         if (TextUtils.isEmpty(contents))
             return;
         String[] s = contents.split("/n");
@@ -100,13 +99,8 @@ public class WriteNoteActivity extends BaseActivity<WriteNoteBinding> implements
     }
 
     @Override
-    public void home() {
-        super.home();
-        finish();
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
     }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
     /**
      * update the binding text

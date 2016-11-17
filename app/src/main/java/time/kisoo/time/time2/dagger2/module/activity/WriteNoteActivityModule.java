@@ -13,22 +13,21 @@ import time.kisoo.time.time2.viewmodel.activity.WriteNoteActivityVM;
  */
 
 @Module
-public class WriteNoteActivityModule {
-    private WriteNoteActivity context;
+public class WriteNoteActivityModule extends BaseActivityModule<WriteNoteActivity>{
     private SpannableStringBuilder builder;
 
     public WriteNoteActivityModule(WriteNoteActivity context,SpannableStringBuilder builder) {
-        this.context = context;
+        super(context);
         this.builder = builder;
     }
 
     @Provides
     Context provideContext() {
-        return context;
+        return mContext;
     }
 
     @Provides
     WriteNoteActivityVM provideViewModel() {
-        return new WriteNoteActivityVM(context,builder);
+        return new WriteNoteActivityVM(mContext,builder);
     }
 }

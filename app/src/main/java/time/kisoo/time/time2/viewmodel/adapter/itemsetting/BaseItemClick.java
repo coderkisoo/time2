@@ -1,15 +1,17 @@
-package time.kisoo.time.time2.viewmodel.adapter;
+package time.kisoo.time.time2.viewmodel.adapter.itemsetting;
 
 import android.databinding.Bindable;
 import android.view.View;
 
-import time.kisoo.time.time2.view.adapter.SettingAdapter;
+import time.kisoo.time.time2.common.config.Constant;
+import time.kisoo.time.time2.viewmodel.adapter.BaseItemSettingVM;
+import time.kisoo.time.time2.viewmodel.adapter.ClickAction;
 
 /**
  * Created by KiSoo on 2016/11/17.
  */
 
-public class ItemClick extends ItemSettingVM {
+public class BaseItemClick extends BaseItemSettingVM {
 
     @Bindable
     public int imgSrc;
@@ -19,12 +21,12 @@ public class ItemClick extends ItemSettingVM {
     public String description;
     private ClickAction clickAction;
 
-    public ItemClick(int imgSrc, String settingInfo, String description, ClickAction action) {
+    public BaseItemClick(int imgSrc, String settingInfo, String description, ClickAction action) {
         this.imgSrc = imgSrc;
         this.settingInfo = settingInfo;
         this.description = description;
         this.clickAction = action;
-        this.type = SettingAdapter.TYPE_CLICK;
+        this.type = Constant.TYPE_CLICK;
     }
 
     public void clickItem(View view) {

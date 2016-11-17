@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools">
+    <data
+        class="FontSettingActivityBinding">
+
+        <variable
+            name="viewModel"
+            type="time.kisoo.time.time2.viewmodel.activity.FontSettingActivityVM"/>
+
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            bind:title="@{viewModel.title}"
+            android:id="@+id/rl_toolbar"
+            layout="@layout/back_toolbar"/>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_below="@+id/rl_toolbar"
+            android:layout_height="match_parent"
+            app:adapter="@{viewModel.adapter}"
+            />
+    </RelativeLayout>
+
+</layout>

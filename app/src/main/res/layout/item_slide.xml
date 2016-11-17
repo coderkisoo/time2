@@ -7,11 +7,11 @@
 
         <import type="android.view.View" />
 
-        <import type="time.kisoo.time.time2.viewmodel.adapter.ItemSlide" />
+        <import type="time.kisoo.time.time2.viewmodel.adapter.itemsetting.BaseItemSlide" />
 
         <variable
             name="viewModel"
-            type="ItemSlide" />
+            type="BaseItemSlide" />
     </data>
 
     <RelativeLayout
@@ -22,11 +22,10 @@
 
         <ImageView
             android:id="@+id/iv_icon"
-            android:layout_width="@dimen/dp_32"
-            android:layout_height="@dimen/dp_32"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dp_16"
-            android:padding="@dimen/dp_4"
             app:imgSrc="@{viewModel.imgSrc}" />
 
         <TextView

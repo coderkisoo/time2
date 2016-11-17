@@ -28,6 +28,7 @@ import cn.finalteam.rxgalleryfinal.rxbus.event.ImageMultipleResultEvent;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import time.kisoo.time.time2.BR;
+import time.kisoo.time.time2.R;
 import time.kisoo.time.time2.util.MyTextUtil;
 import time.kisoo.time.time2.util.ScreenPixelUtil;
 import time.kisoo.time.time2.view.activity.WriteNoteActivity;
@@ -47,6 +48,9 @@ public class WriteNoteActivityVM extends BaseObservable {
     @Bindable
     private int visibility;
 
+    @Bindable
+    public String title;
+
     private static final int MIDDLE_TEXT_SIZE = 18;
     private static final int BIG_TEXT_SIZE = 24;
     private static final int SMALL_TEXT_SIZE = 14;
@@ -60,6 +64,7 @@ public class WriteNoteActivityVM extends BaseObservable {
         this.textSize = MIDDLE_TEXT_SIZE;
         this.color = DEFAULT_TEXT_COLOR;
         this.visibility = View.VISIBLE;
+        this.title = context.getString(R.string.new_note);
     }
 
 

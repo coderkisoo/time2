@@ -78,7 +78,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     }
 
     public void home(){
-
+        this.finish();
     }
 
 

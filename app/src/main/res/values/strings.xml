@@ -16,6 +16,8 @@
     <string name="see_more">更多</string>
     <string name="setting">设置</string>
     <string name="item_update">自动更新</string>
+    <string name="item_font">字体设置</string>
     <string name="description_update">是否开启更新，建议开启</string>
+    <string name="description_default_font">默认字体</string>
 
 </resources>

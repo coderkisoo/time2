@@ -12,21 +12,20 @@ import time.kisoo.time.time2.viewmodel.activity.MainActivityVM;
  */
 
 @Module
-public class MainActivityModule {
-    private MainActivity context;
+public class MainActivityModule extends BaseActivityModule<MainActivity>{
 
     public MainActivityModule(MainActivity context) {
-        this.context = context;
+        super(context);
     }
 
     @Provides
     Context provideContext() {
-        return context;
+        return mContext;
     }
 
     @Provides
     MainActivityVM provideViewModel() {
-        return new MainActivityVM(context);
+        return new MainActivityVM(mContext);
     }
 
 

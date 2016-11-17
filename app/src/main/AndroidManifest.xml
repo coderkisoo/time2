@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.WriteNoteActivity" />
+        <activity android:name=".view.activity.FontSettingActivity"/>
         <activity
             android:name="cn.finalteam.rxgalleryfinal.ui.activity.MediaActivity"
             android:screenOrientation="portrait"

@@ -48,6 +48,8 @@ public class MainFragmentVM extends BaseViewModel {
             super.onScrolled(recyclerView, dx, dy);
             if (recyclerView.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING) {
                 mainFragment.showFab(dy > 0);
+                if (dy < 0)
+                    mainFragment.closeFab(recyclerView);
             }
         }
     };
@@ -60,7 +62,6 @@ public class MainFragmentVM extends BaseViewModel {
         this.manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         initTestData();
     }
-
 
 
     public void note(View view) {

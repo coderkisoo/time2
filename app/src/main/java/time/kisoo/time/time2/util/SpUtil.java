@@ -30,5 +30,12 @@ public final class SpUtil {
         sp.edit().putInt(key,value).apply();
     }
 
+    public static String getString(String key,String defaultValue){
+        return sp.getString(key,defaultValue);
+    }
+
+    public static boolean getBoolean(String key,boolean defaultValue){
+        return sp.getBoolean(key,defaultValue);
+    }
 
 }

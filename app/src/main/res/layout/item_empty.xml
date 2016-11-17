@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="time.kisoo.time.time2.viewmodel.adapter.ItemEmpty" />
+            type="time.kisoo.time.time2.viewmodel.adapter.itemsetting.BaseItemEmpty" />
     </data>
 
     <View
