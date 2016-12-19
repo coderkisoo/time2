@@ -6,7 +6,7 @@ package time.kisoo.time.time2.util;
  * @author carmack
  *
  */
-public class Log {
+public final class Log {
 
     private final static boolean DEBUG = true;
 

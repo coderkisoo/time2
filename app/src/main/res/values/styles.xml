@@ -15,6 +15,7 @@
         <item name="gallery_page_bg">@color/colorWhite</item>
         <item name="gallery_default_image">@mipmap/ic_loading</item>
         <item name="gallery_imageview_bg">@color/colorWhite</item>
+
     </style>
 
 </resources>

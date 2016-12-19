@@ -7,7 +7,7 @@ import cn.mycommons.androidsizeutil.DimenUtil;
  * Created by KiSoo on 2016/11/7.
  */
 
-public class ScreenPixelUtil {
+public final class ScreenPixelUtil {
     private static DimenUtil dimenUtil;
 
     public static DimenUtil getInstance() {

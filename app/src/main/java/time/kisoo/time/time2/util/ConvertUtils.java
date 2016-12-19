@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 /**
  * 转换工具类
  */
-public class ConvertUtils {
+public final class ConvertUtils {
 
     @BindingAdapter({"addOnScrollListener"})
     public static void addOnScrollListener(RecyclerView view, RecyclerView.OnScrollListener listener) {
@@ -25,6 +25,4 @@ public class ConvertUtils {
     public static void loadImage(ImageView view, int imageUrl) {
         Glide.with(view.getContext()).load(imageUrl).into(view);
     }
-
-
 }
