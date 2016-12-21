@@ -3,6 +3,8 @@ package time.kisoo.time.time2.viewmodel.activity;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,9 @@ public class FontSettingActivityVM extends BaseObservable {
     @Bindable
     public FontSettingAdapter adapter;
 
+    @Bindable
+    public RecyclerView.LayoutManager manager;
+
     private List<BaseItemSettingVM> list;
 
     @Inject
@@ -37,9 +42,15 @@ public class FontSettingActivityVM extends BaseObservable {
         this.list = new ArrayList<>();
         initList();
         this.adapter = new FontSettingAdapter(list);
+        this.manager = new LinearLayoutManager(context);
     }
 
     private void initList() {
+        list.add(new ItemPreDownloadVM());
+        list.add(new ItemPreDownloadVM());
+        list.add(new ItemPreDownloadVM());
+        list.add(new ItemPreDownloadVM());
+        list.add(new ItemPreDownloadVM());
         list.add(new ItemPreDownloadVM());
     }
 }

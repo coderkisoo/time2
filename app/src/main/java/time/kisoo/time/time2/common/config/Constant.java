@@ -24,8 +24,8 @@ public class Constant {
     public static final int TYPE_SLIDE = 1;
     public static final int TYPE_EMPTY = 2;
 
-    public static final int TYPE_DOWNLOADED = 3;//已下载
-    public static final int TYPE_DOWNLOADING = 4;//正在下载
+//    public static final int TYPE_DOWNLOADED = 3;//已下载
+//    public static final int TYPE_DOWNLOADING = 4;//正在下载
     public static final int TYPE_PREDOWNLOAD = 5;//准备下载
 
 }

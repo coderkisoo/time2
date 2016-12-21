@@ -33,7 +33,7 @@
                 android:id="@+id/fl_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_behavior="time.kisoo.time.time2.view.customview.FixScrollingFooterBehavior" />
+                app:layout_behavior="time.kisoo.time.time2.view.widget.FixScrollingFooterBehavior" />
         </android.support.design.widget.CoordinatorLayout>
 
         <android.support.design.widget.NavigationView

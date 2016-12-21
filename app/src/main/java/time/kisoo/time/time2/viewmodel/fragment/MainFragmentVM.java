@@ -1,6 +1,5 @@
 package time.kisoo.time.time2.viewmodel.fragment;
 
-import android.content.Intent;
 import android.databinding.Bindable;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
@@ -65,7 +64,7 @@ public class MainFragmentVM extends BaseViewModel {
 
 
     public void note(View view) {
-        mainFragment.startActivity(new Intent(context, WriteNoteActivity.class));
+        mainFragment.start(WriteNoteActivity.class);
     }
 
 

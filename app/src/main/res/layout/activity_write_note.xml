@@ -30,7 +30,7 @@
             android:fillViewport="true"
             android:paddingTop="?attr/actionBarSize">
 
-            <time.kisoo.time.time2.view.customview.RichEditText
+            <time.kisoo.time.time2.view.widget.RichEditText
                 android:id="@+id/et_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

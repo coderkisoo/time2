@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorBack">#EEEEEE</color>
+    <color name="colorWood">#E9D467</color>
+    <color name="colorWoodBack">#4D4D4D</color>
+    <color name="colorPanel">#FAFAFA</color>
+</resources>

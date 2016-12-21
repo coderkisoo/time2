@@ -1,6 +1,7 @@
 package time.kisoo.time.time2.view.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import time.kisoo.time.time2.view.activity.WriteNoteActivity;
 
 /**
  * Created by KiSoo on 2016/11/2.
@@ -38,4 +41,8 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment{
     protected abstract void initModelWithDagger2();
 
     protected abstract int layoutId();
+
+    public void start(Class<WriteNoteActivity> clazz) {
+        startActivity(new Intent(context,clazz));
+    }
 }

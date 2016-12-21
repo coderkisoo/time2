@@ -1,1 +1,1 @@
-include ':app', 'rxGalleryFinal'
+include ':app', ':downloadview', 'rxGalleryFinal'

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -55,14 +54,19 @@ public class WriteNoteActivityVM extends BaseObservable {
     private static final int BIG_TEXT_SIZE = 24;
     private static final int SMALL_TEXT_SIZE = 14;
 
-    private static final int DEFAULT_TEXT_COLOR = Color.BLACK;
+    private final int COLOR_BLACK;
+    private final int COLOR_BLUE;
+    private final int COLOR_RED;
 
     @Inject
     public WriteNoteActivityVM(WriteNoteActivity activity, SpannableStringBuilder builder) {
         this.context = activity;
         this.content = builder;
         this.textSize = MIDDLE_TEXT_SIZE;
-        this.color = DEFAULT_TEXT_COLOR;
+        this.COLOR_BLACK = activity.getResources().getColor(R.color.colorBlack);
+        this.COLOR_BLUE = activity.getResources().getColor(R.color.colorBlue);
+        this.COLOR_RED = activity.getResources().getColor(R.color.colorRed);
+        this.color = COLOR_BLACK;
         this.visibility = View.VISIBLE;
         this.title = context.getString(R.string.new_note);
     }
@@ -137,15 +141,15 @@ public class WriteNoteActivityVM extends BaseObservable {
     }
 
     public void setBlack(View view) {
-        setColor(Color.BLACK, view);
+        setColor(COLOR_BLACK, view);
     }
 
     public void setBlue(View view) {
-        setColor(Color.BLUE, view);
+        setColor(COLOR_BLUE, view);
     }
 
     public void setRed(View view) {
-        setColor(Color.RED, view);
+        setColor(COLOR_RED, view);
     }
 
     public void setContent(SpannableStringBuilder spannableString) {

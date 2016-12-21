@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_below="@+id/rl_toolbar"
             android:layout_height="match_parent"
+            app:layoutManager="@{viewModel.manager}"
             app:adapter="@{viewModel.adapter}"
             />
     </RelativeLayout>

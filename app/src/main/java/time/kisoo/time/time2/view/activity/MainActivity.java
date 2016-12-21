@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+         super.onCreate(savedInstanceState);
         initToolbar();
         initFragments();
         chooseFragment(R.id.menu_item_1);

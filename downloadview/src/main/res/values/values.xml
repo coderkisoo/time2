@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DownloadView">
+        <attr name="load_progress" format="integer"/>
+        <attr name="panel_color" format="color"/>
+        <attr name="space_height" format="dimension"/>
+        <attr name="space_color" format="color"/>
+        <attr name="panel_src" format="reference"/>
+    </declare-styleable>
+</resources>

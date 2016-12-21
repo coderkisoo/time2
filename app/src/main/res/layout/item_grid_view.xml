@@ -8,7 +8,7 @@
             type="String"/>
     </data>
 
-    <time.kisoo.time.time2.view.customview.GlideImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    <time.kisoo.time.time2.view.widget.GlideImageView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/giv_img"

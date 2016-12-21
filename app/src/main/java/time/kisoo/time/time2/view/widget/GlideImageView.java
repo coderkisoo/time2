@@ -1,4 +1,4 @@
-package time.kisoo.time.time2.view.customview;
+package time.kisoo.time.time2.view.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

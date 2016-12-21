@@ -29,9 +29,9 @@ public class FontSettingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
-            case Constant.TYPE_DOWNLOADED:
+//            case Constant.TYPE_DOWNLOADED:
             case Constant.TYPE_PREDOWNLOAD:
-            case Constant.TYPE_DOWNLOADING:
+//            case Constant.TYPE_DOWNLOADING:
                 return ViewHolder.<ItemDownLoadBinding>getInstance(parent, R.layout.item_download);
             case Constant.TYPE_EMPTY:
                 return ViewHolder.<EmptyViewBinding>getInstance(parent, R.layout.item_empty);
@@ -43,11 +43,13 @@ public class FontSettingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (getItemViewType(position)) {
-            case Constant.TYPE_DOWNLOADED:
+//            case Constant.TYPE_DOWNLOADED:
+            case Constant.TYPE_PREDOWNLOAD:
                 ((ViewHolder<ItemDownLoadBinding>) holder).binding.setViewModel((ItemPreDownloadVM) list.get(position));
+                break;
             case Constant.TYPE_EMPTY:
                 ((ViewHolder<EmptyViewBinding>) holder).binding.setViewModel((BaseItemEmpty) list.get(position));
-
+                break;
         }
     }
 

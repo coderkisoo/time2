@@ -14,12 +14,13 @@
             type="ItemPreDownloadVM" />
     </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_64"
-        android:background="@color/colorWhite">
-
-    </RelativeLayout>
+    <com.kisoo.downloadview.DownloadView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_128"
+        bind:panel_src="@mipmap/font_sample"
+        />
+    <!--bind:panel_color="@color/colorYellow"-->
+    <!--bind:space_color="@color/colorBlue" -->
 
 </layout>
 

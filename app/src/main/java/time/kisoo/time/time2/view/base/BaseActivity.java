@@ -1,6 +1,7 @@
 package time.kisoo.time.time2.view.base;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -79,6 +80,12 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
     public void home(){
         this.finish();
+    }
+
+    public void startActivity(Class<?> clazz){
+        Intent intent = getIntent();
+        intent.setClass(context,clazz);
+        startActivity(intent);
     }
 
 
