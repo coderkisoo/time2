@@ -62,9 +62,9 @@ public class DownloadView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getX() < getWidth() - PADDING
+        if (event.getX() < getMeasuredWidth() - PADDING
                 && event.getX() > PADDING
-                && event.getY() < getHeight() - mSpaceHeight
+                && event.getY() < getMeasuredHeight() - mSpaceHeight
                 && event.getY() > mSpaceHeight) {
             return super.onTouchEvent(event);
         } else {
