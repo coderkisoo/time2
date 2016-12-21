@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -25,7 +26,7 @@ public class DownloadView extends View {
     private int WOODEN_PAINT_WIDTH = 8;//绳子圆环的宽度
 
     private int PADDING = 24;
-    private int PICTURE_PADDING = PADDING+64;
+    private int PICTURE_PADDING = PADDING + 64;
 
     private int WOODEN_ROCK_HEIGHT = 32;
     private int woodenDistance = 15;
@@ -52,10 +53,22 @@ public class DownloadView extends View {
             mProgress = ta.getInt(R.styleable.DownloadView_load_progress, 0);
             mSpaceHeight = ta.getDimension(R.styleable.DownloadView_space_height, 88);
             mSpaceColor = ta.getColor(R.styleable.DownloadView_space_color, getResources().getColor(R.color.colorBack));
-            panelSrc = ((BitmapDrawable)ta.getDrawable(R.styleable.DownloadView_panel_src)).getBitmap();
+            panelSrc = ((BitmapDrawable) ta.getDrawable(R.styleable.DownloadView_panel_src)).getBitmap();
             initPaints();
         } finally {
             ta.recycle();
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getX() < getWidth() - PADDING
+                && event.getX() > PADDING
+                && event.getY() < getHeight() - mSpaceHeight
+                && event.getY() > mSpaceHeight) {
+            return super.onTouchEvent(event);
+        } else {
+            return !super.onTouchEvent(event);
         }
     }
 
@@ -118,21 +131,21 @@ public class DownloadView extends View {
 
         drawPanel(canvas, PADDING, mSpaceHeight, canvas.getWidth() - PADDING, canvas.getHeight() - mSpaceHeight, 12, mPanelBackPaint);
 
-        canvas.drawBitmap(panelSrc,null,
-                new RectF(PICTURE_PADDING,mSpaceHeight+64,canvas.getWidth()-PICTURE_PADDING,canvas.getHeight()-mSpaceHeight-64),
+        canvas.drawBitmap(panelSrc, null,
+                new RectF(PICTURE_PADDING, mSpaceHeight + 64, canvas.getWidth() - PICTURE_PADDING, canvas.getHeight() - mSpaceHeight - 64),
                 mPanelSrcPaint);
         //画绳圈
-        drawCircleWithX(canvas, circleWidth, circleHeight, positionX1, (int) mSpaceHeight, mWoodenPaint,true);
-        drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, positionX1, (int) mSpaceHeight, mWoodenBackPaint,true);
-        drawCircleWithX(canvas, circleWidth + WOODEN_PAINT_WIDTH, circleHeight + WOODEN_PAINT_WIDTH, positionX1, (int) mSpaceHeight, mWoodenBackPaint,true);
-        drawCircleWithX(canvas, circleWidth, circleHeight, canvas.getWidth() - positionX1, (int) mSpaceHeight, mWoodenPaint,true);
-        drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, canvas.getWidth() - positionX1, (int) mSpaceHeight, mWoodenBackPaint,true);
-        drawCircleWithX(canvas, circleWidth + WOODEN_PAINT_WIDTH, circleHeight + WOODEN_PAINT_WIDTH, canvas.getWidth() - positionX1, (int) mSpaceHeight, mWoodenBackPaint,true);
+        drawCircleWithX(canvas, circleWidth, circleHeight, positionX1, (int) mSpaceHeight, mWoodenPaint, true);
+        drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, positionX1, (int) mSpaceHeight, mWoodenBackPaint, true);
+        drawCircleWithX(canvas, circleWidth + WOODEN_PAINT_WIDTH, circleHeight + WOODEN_PAINT_WIDTH, positionX1, (int) mSpaceHeight, mWoodenBackPaint, true);
+        drawCircleWithX(canvas, circleWidth, circleHeight, canvas.getWidth() - positionX1, (int) mSpaceHeight, mWoodenPaint, true);
+        drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, canvas.getWidth() - positionX1, (int) mSpaceHeight, mWoodenBackPaint, true);
+        drawCircleWithX(canvas, circleWidth + WOODEN_PAINT_WIDTH, circleHeight + WOODEN_PAINT_WIDTH, canvas.getWidth() - positionX1, (int) mSpaceHeight, mWoodenBackPaint, true);
         //画绳子
-        drawLineWithXY(canvas, woodenDistance, positionX1, WOODEN_PAINT_WIDTH, mWoodenLineBackPaint,true);
-        drawLineWithXY(canvas, woodenDistance, positionX1, WOODEN_PAINT_WIDTH / 2, mWoodenLinePaint,true);
-        drawLineWithXY(canvas, woodenDistance, canvas.getWidth() - positionX1, WOODEN_PAINT_WIDTH, mWoodenLineBackPaint,true);
-        drawLineWithXY(canvas, woodenDistance, canvas.getWidth() - positionX1, WOODEN_PAINT_WIDTH / 2, mWoodenLinePaint,true);
+        drawLineWithXY(canvas, woodenDistance, positionX1, WOODEN_PAINT_WIDTH, mWoodenLineBackPaint, true);
+        drawLineWithXY(canvas, woodenDistance, positionX1, WOODEN_PAINT_WIDTH / 2, mWoodenLinePaint, true);
+        drawLineWithXY(canvas, woodenDistance, canvas.getWidth() - positionX1, WOODEN_PAINT_WIDTH, mWoodenLineBackPaint, true);
+        drawLineWithXY(canvas, woodenDistance, canvas.getWidth() - positionX1, WOODEN_PAINT_WIDTH / 2, mWoodenLinePaint, true);
         //画绳结
         drawRock(canvas, positionX1, (int) (mSpaceHeight - WOODEN_PAINT_WIDTH * 2 - woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
         drawRock(canvas, positionX1, (int) (mSpaceHeight - WOODEN_PAINT_WIDTH * 2 - woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
@@ -149,29 +162,29 @@ public class DownloadView extends View {
         drawRock(canvas, canvas.getWidth() - positionX1, (int) (mSpaceHeight - WOODEN_PAINT_WIDTH * 4 - woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
         drawRock(canvas, canvas.getWidth() - positionX1, (int) (mSpaceHeight - WOODEN_PAINT_WIDTH * 4 - woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
         //下面画绳圈
-        drawCircleWithX(canvas, circleWidth, circleHeight, positionX1, (int) (canvas.getHeight()-mSpaceHeight), mWoodenPaint,false);
-        drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, positionX1, (int) (canvas.getHeight()-mSpaceHeight), mWoodenBackPaint,false);
-        drawCircleWithX(canvas, circleWidth + WOODEN_PAINT_WIDTH, circleHeight + WOODEN_PAINT_WIDTH, positionX1, (int) (canvas.getHeight()-mSpaceHeight), mWoodenBackPaint,false);
-        drawCircleWithX(canvas, circleWidth, circleHeight, canvas.getWidth() - positionX1, (int) (canvas.getHeight()-mSpaceHeight), mWoodenPaint,false);
-        drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, canvas.getWidth() - positionX1, (int) (canvas.getHeight()-mSpaceHeight), mWoodenBackPaint,false);
-        drawCircleWithX(canvas, circleWidth + WOODEN_PAINT_WIDTH, circleHeight + WOODEN_PAINT_WIDTH, canvas.getWidth() - positionX1, (int) (canvas.getHeight()-mSpaceHeight), mWoodenBackPaint,false);
+        drawCircleWithX(canvas, circleWidth, circleHeight, positionX1, (int) (canvas.getHeight() - mSpaceHeight), mWoodenPaint, false);
+        drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, positionX1, (int) (canvas.getHeight() - mSpaceHeight), mWoodenBackPaint, false);
+        drawCircleWithX(canvas, circleWidth + WOODEN_PAINT_WIDTH, circleHeight + WOODEN_PAINT_WIDTH, positionX1, (int) (canvas.getHeight() - mSpaceHeight), mWoodenBackPaint, false);
+        drawCircleWithX(canvas, circleWidth, circleHeight, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight), mWoodenPaint, false);
+        drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight), mWoodenBackPaint, false);
+        drawCircleWithX(canvas, circleWidth + WOODEN_PAINT_WIDTH, circleHeight + WOODEN_PAINT_WIDTH, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight), mWoodenBackPaint, false);
         //画下面绳子
-        drawLineWithXY(canvas, woodenDistance, positionX1, WOODEN_PAINT_WIDTH, mWoodenLineBackPaint,false);
-        drawLineWithXY(canvas, woodenDistance, positionX1, WOODEN_PAINT_WIDTH / 2, mWoodenLinePaint,false);
-        drawLineWithXY(canvas, woodenDistance, canvas.getWidth() - positionX1, WOODEN_PAINT_WIDTH, mWoodenLineBackPaint,false);
-        drawLineWithXY(canvas, woodenDistance, canvas.getWidth() - positionX1, WOODEN_PAINT_WIDTH / 2, mWoodenLinePaint,false);
+        drawLineWithXY(canvas, woodenDistance, positionX1, WOODEN_PAINT_WIDTH, mWoodenLineBackPaint, false);
+        drawLineWithXY(canvas, woodenDistance, positionX1, WOODEN_PAINT_WIDTH / 2, mWoodenLinePaint, false);
+        drawLineWithXY(canvas, woodenDistance, canvas.getWidth() - positionX1, WOODEN_PAINT_WIDTH, mWoodenLineBackPaint, false);
+        drawLineWithXY(canvas, woodenDistance, canvas.getWidth() - positionX1, WOODEN_PAINT_WIDTH / 2, mWoodenLinePaint, false);
         //画下面绳结
-        drawRock(canvas, positionX1, (int) (canvas.getHeight()-mSpaceHeight + WOODEN_PAINT_WIDTH * 2 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
-        drawRock(canvas, positionX1, (int) (canvas.getHeight()-mSpaceHeight + WOODEN_PAINT_WIDTH * 2 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
+        drawRock(canvas, positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 2 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
+        drawRock(canvas, positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 2 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
 
-        drawRock(canvas, positionX1, (int) (canvas.getHeight()-mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
-        drawRock(canvas, positionX1, (int) (canvas.getHeight()-mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
+        drawRock(canvas, positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
+        drawRock(canvas, positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
 
-        drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight()-mSpaceHeight + WOODEN_PAINT_WIDTH * 2 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
-        drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight()-mSpaceHeight + WOODEN_PAINT_WIDTH * 2 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
+        drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 2 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
+        drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 2 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
 
-        drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight()-mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
-        drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight()-mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
+        drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
+        drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
 
     }
 
@@ -189,14 +202,14 @@ public class DownloadView extends View {
      * @param x
      * @param paint
      */
-    private void drawCircleWithX(Canvas canvas, int circleWidth, int circleHeight, int x, int y, Paint paint,boolean top) {
+    private void drawCircleWithX(Canvas canvas, int circleWidth, int circleHeight, int x, int y, Paint paint, boolean top) {
         RectF rectF = new RectF(x - circleWidth / 2, y - circleHeight / 2, x + circleWidth / 2, y + circleHeight / 2);
-        canvas.drawArc(rectF, top?90:0, 270, false, paint);
+        canvas.drawArc(rectF, top ? 90 : 0, 270, false, paint);
     }
 
 
-    private void drawLineWithXY(Canvas canvas, int distance, int x, int width, Paint paint,boolean top) {
-        drawPanel(canvas, x, top?0:canvas.getHeight()-mSpaceHeight+distance, x + width / 2, top?mSpaceHeight - distance:canvas.getHeight(), width / 2, paint);
+    private void drawLineWithXY(Canvas canvas, int distance, int x, int width, Paint paint, boolean top) {
+        drawPanel(canvas, x, top ? 0 : canvas.getHeight() - mSpaceHeight + distance, x + width / 2, top ? mSpaceHeight - distance : canvas.getHeight(), width / 2, paint);
     }
 
     private void drawRock(Canvas canvas, int x, int y, int width, int height, Paint paint) {
