@@ -44,6 +44,7 @@ public class DownloadView extends View {
     private Bitmap panelSrc;
 
     private final int positionX1 = 108;
+    private Canvas mCanvas;
 
     public DownloadView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -66,6 +67,14 @@ public class DownloadView extends View {
                 && event.getX() > PADDING
                 && event.getY() < getMeasuredHeight() - mSpaceHeight
                 && event.getY() > mSpaceHeight) {
+            //最右侧的矩形区域的点击事件
+            if (event.getX() < getMeasuredWidth() - PADDING
+                    &&event.getX() > getMeasuredWidth() - PADDING-80
+                    &&event.getY() < getMeasuredHeight() - mSpaceHeight-10
+                    &&event.getY() > mSpaceHeight + 10){
+
+
+            }
             return super.onTouchEvent(event);
         } else {
             return !super.onTouchEvent(event);
@@ -118,6 +127,25 @@ public class DownloadView extends View {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
+    }
+
+    //新添加：在measure方法中对wrap_content进行设置
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int widthMeasureSpecMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthMeasureSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMeasureSpecMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightMeasureSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+        int default_height = (int) ((mSpaceHeight+64)*2+64);
+        if (widthMeasureSpecMode==MeasureSpec.AT_MOST&&heightMeasureSpecMode==MeasureSpec.AT_MOST){
+            setMeasuredDimension(widthMeasureSpecSize,default_height);
+        }else if (widthMeasureSpecMode==MeasureSpec.AT_MOST){
+            setMeasuredDimension(widthMeasureSpecSize,heightMeasureSpecSize);
+        }else if (heightMeasureSpecMode==MeasureSpec.AT_MOST){
+            setMeasuredDimension(widthMeasureSpecSize,default_height);
+        }
+
     }
 
     @SuppressLint("DrawAllocation")
