@@ -16,6 +16,7 @@ import time.kisoo.time.time2.view.fragment.MainFragment;
         modules = MainFragmentModule.class
 )
 public interface MainFragmentComponent {
+
     void injectFragment(MainFragment mainFragment);
     void injectActivity(MainActivity activity);
 }
