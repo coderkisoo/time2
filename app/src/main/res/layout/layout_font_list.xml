@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<data
+    class = "FontListLayoutBinding">
+    <variable
+        name="viewModel"
+        type="time.kisoo.time.time2.viewmodel.view.FontListLayoutVM"/>
+</data>
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_toolbar"
+        app:adapter="@{viewModel.adapter}"
+        app:layoutManager="@{viewModel.manager}" />
+</layout>

@@ -16,13 +16,12 @@
             bind:title="@{viewModel.title}"
             android:id="@+id/rl_toolbar"
             layout="@layout/back_toolbar"/>
-        <android.support.v7.widget.RecyclerView
+        <ViewStub
+            android:id="@+id/vs_loading"
+            android:layout_below="@id/rl_toolbar"
             android:layout_width="match_parent"
-            android:layout_below="@+id/rl_toolbar"
             android:layout_height="match_parent"
-            app:layoutManager="@{viewModel.manager}"
-            app:adapter="@{viewModel.adapter}"
-            />
+            android:layout="@layout/layout_font_list"/>
     </RelativeLayout>
 
 </layout>
