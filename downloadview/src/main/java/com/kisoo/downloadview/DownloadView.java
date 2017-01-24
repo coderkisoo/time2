@@ -24,7 +24,7 @@ public class DownloadView extends View {
     private int circleWidth = 30;//绳子圆环的宽度
     private int circleHeight = 50;//绳子圆环的宽度
     private int WOODEN_PAINT_WIDTH = 8;//绳子圆环的宽度
-
+    private int PANEL_SRC_HEIGHT = 64 * 2;
     private int PADDING = 24;
     private int PICTURE_PADDING = PADDING + 64;
 
@@ -54,7 +54,11 @@ public class DownloadView extends View {
             mProgress = ta.getInt(R.styleable.DownloadView_load_progress, 0);
             mSpaceHeight = ta.getDimension(R.styleable.DownloadView_space_height, 88);
             mSpaceColor = ta.getColor(R.styleable.DownloadView_space_color, getResources().getColor(R.color.colorBack));
-            panelSrc = ((BitmapDrawable) ta.getDrawable(R.styleable.DownloadView_panel_src)).getBitmap();
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) ta.getDrawable(R.styleable.DownloadView_panel_src);
+            if (null != bitmapDrawable) {
+                panelSrc = bitmapDrawable.getBitmap();
+
+            }
             initPaints();
         } finally {
             ta.recycle();
@@ -69,9 +73,9 @@ public class DownloadView extends View {
                 && event.getY() > mSpaceHeight) {
             //最右侧的矩形区域的点击事件
             if (event.getX() < getMeasuredWidth() - PADDING
-                    &&event.getX() > getMeasuredWidth() - PADDING-80
-                    &&event.getY() < getMeasuredHeight() - mSpaceHeight-10
-                    &&event.getY() > mSpaceHeight + 10){
+                    && event.getX() > getMeasuredWidth() - PADDING - 80
+                    && event.getY() < getMeasuredHeight() - mSpaceHeight - 10
+                    && event.getY() > mSpaceHeight + 10) {
 
 
             }
@@ -79,6 +83,14 @@ public class DownloadView extends View {
         } else {
             return !super.onTouchEvent(event);
         }
+    }
+
+    public int getPanelWidth() {
+        return getWidth() - 2 * PICTURE_PADDING;
+    }
+
+    public int getPanelHeight() {
+        return (int) (getHeight() - 2 * (mSpaceHeight + 64));
     }
 
     private void initPaints() {
@@ -137,13 +149,13 @@ public class DownloadView extends View {
         int widthMeasureSpecSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightMeasureSpecMode = MeasureSpec.getMode(heightMeasureSpec);
         int heightMeasureSpecSize = MeasureSpec.getSize(heightMeasureSpec);
-        int default_height = (int) ((mSpaceHeight+64)*2+64);
-        if (widthMeasureSpecMode==MeasureSpec.AT_MOST&&heightMeasureSpecMode==MeasureSpec.AT_MOST){
-            setMeasuredDimension(widthMeasureSpecSize,default_height);
-        }else if (widthMeasureSpecMode==MeasureSpec.AT_MOST){
-            setMeasuredDimension(widthMeasureSpecSize,heightMeasureSpecSize);
-        }else if (heightMeasureSpecMode==MeasureSpec.AT_MOST){
-            setMeasuredDimension(widthMeasureSpecSize,default_height);
+        int default_height = (int) ((mSpaceHeight + 64) * 2 + 64);
+        if (widthMeasureSpecMode == MeasureSpec.AT_MOST && heightMeasureSpecMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(widthMeasureSpecSize, default_height);
+        } else if (widthMeasureSpecMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(widthMeasureSpecSize, heightMeasureSpecSize);
+        } else if (heightMeasureSpecMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(widthMeasureSpecSize, default_height);
         }
 
     }
@@ -158,10 +170,10 @@ public class DownloadView extends View {
         drawPanel(canvas, PADDING, mSpaceHeight, canvas.getWidth() - PADDING, canvas.getHeight() - mSpaceHeight, 12, mPanelPaint);
 
         drawPanel(canvas, PADDING, mSpaceHeight, canvas.getWidth() - PADDING, canvas.getHeight() - mSpaceHeight, 12, mPanelBackPaint);
-
-        canvas.drawBitmap(panelSrc, null,
-                new RectF(PICTURE_PADDING, mSpaceHeight + 64, canvas.getWidth() - PICTURE_PADDING, canvas.getHeight() - mSpaceHeight - 64),
-                mPanelSrcPaint);
+        if (panelSrc != null)
+            canvas.drawBitmap(panelSrc, null,
+                    new RectF(PICTURE_PADDING, mSpaceHeight + 64, canvas.getWidth() - PICTURE_PADDING, canvas.getHeight() - mSpaceHeight - 64),
+                    mPanelSrcPaint);
         //画绳圈
         drawCircleWithX(canvas, circleWidth, circleHeight, positionX1, (int) mSpaceHeight, mWoodenPaint, true);
         drawCircleWithX(canvas, circleWidth - WOODEN_PAINT_WIDTH, circleHeight - WOODEN_PAINT_WIDTH, positionX1, (int) mSpaceHeight, mWoodenBackPaint, true);
@@ -214,6 +226,13 @@ public class DownloadView extends View {
         drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH, WOODEN_ROCK_HEIGHT, mWoodenLineBackPaint);
         drawRock(canvas, canvas.getWidth() - positionX1, (int) (canvas.getHeight() - mSpaceHeight + WOODEN_PAINT_WIDTH * 4 + woodenDistance), WOODEN_PAINT_WIDTH / 2, WOODEN_ROCK_HEIGHT, mWoodenLinePaint);
 
+    }
+
+    public void setPanelSrc(Bitmap bitmap) {
+        if (this.panelSrc != bitmap) {
+            this.panelSrc = bitmap;
+            invalidate();
+        }
     }
 
     private void drawPanel(Canvas canvas, int padding, float mSpaceHeight, int right, float bottom, int rx, Paint mSpacePaint) {

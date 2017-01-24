@@ -1,6 +1,5 @@
 package time.kisoo.time.time2.view.activity;
 
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -10,12 +9,9 @@ import time.kisoo.time.time2.R;
 import time.kisoo.time.time2.app.App;
 import time.kisoo.time.time2.dagger2.component.activity.DaggerFontSettingActivityComponent;
 import time.kisoo.time.time2.dagger2.module.activity.FontSettingActivityModule;
-import time.kisoo.time.time2.dagger2.module.view.FontListLayoutModule;
-import time.kisoo.time.time2.databinding.FontListLayoutBinding;
 import time.kisoo.time.time2.databinding.FontSettingActivityBinding;
 import time.kisoo.time.time2.view.base.BaseActivity;
 import time.kisoo.time.time2.viewmodel.activity.FontSettingActivityVM;
-import time.kisoo.time.time2.viewmodel.view.FontListLayoutVM;
 
 /**
  * Created by KiSoo on 2016/11/2.
@@ -25,8 +21,8 @@ public class FontSettingActivity extends BaseActivity<FontSettingActivityBinding
 
     @Inject
     FontSettingActivityVM viewModel;
-    @Inject
-    FontListLayoutVM fontListLayoutVM;
+//    @Inject
+//    FontListLayoutVM fontListLayoutVM;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +36,7 @@ public class FontSettingActivity extends BaseActivity<FontSettingActivityBinding
                 .builder()
                 .appComponent(((App) getApplication()).component())
                 .fontSettingActivityModule(new FontSettingActivityModule(this))
-                .fontListLayoutModule(new FontListLayoutModule(this))
+//                .fontListLayoutModule(new FontListLayoutModule(this))
                 .build()
                 .inject(this);
     }
@@ -49,12 +45,16 @@ public class FontSettingActivity extends BaseActivity<FontSettingActivityBinding
     protected void bindView() {
         super.bindView();
         binding.setViewModel(viewModel);
-        binding.vsLoading.setOnInflateListener((viewStub, view) -> {
-            FontListLayoutBinding fontListLayoutBinding = DataBindingUtil.bind(view);
-            fontListLayoutBinding.setViewModel(fontListLayoutVM);
-        });
+        viewModel.refresh();
+//        viewModel.refresh();
+//        binding.vsLoading.setOnInflateListener((viewStub, view) -> {
+//            FontListLayoutBinding fontListLayoutBinding = DataBindingUtil.bind(view);
+//            fontListLayoutBinding.setViewModel(fontListLayoutVM);
+//        });
 
     }
+
+
 
     @Override
     protected int layoutId() {

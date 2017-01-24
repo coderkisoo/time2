@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:bind="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/tools">
-    <data
-        class="FontSettingActivityBinding">
+<layout xmlns:app="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data class="FontSettingActivityBinding">
 
         <variable
             name="viewModel"
-            type="time.kisoo.time.time2.viewmodel.activity.FontSettingActivityVM"/>
+            type="time.kisoo.time.time2.viewmodel.activity.FontSettingActivityVM" />
 
     </data>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <include
-            bind:title="@{viewModel.title}"
             android:id="@+id/rl_toolbar"
-            layout="@layout/back_toolbar"/>
-        <ViewStub
-            android:id="@+id/vs_loading"
-            android:layout_below="@id/rl_toolbar"
+            layout="@layout/back_toolbar"
+            bind:title="@{viewModel.title}" />
+        <!--<ViewStub-->
+        <!--android:id="@+id/vs_loading"-->
+        <!--android:layout_below="@id/rl_toolbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout="@layout/layout_font_list"/>-->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srl_refresh"
             android:layout_width="match_parent"
+            android:layout_below="@+id/rl_toolbar"
             android:layout_height="match_parent"
-            android:layout="@layout/layout_font_list"/>
+            app:onRefreshListener="@{viewModel.onRefreshListener}"
+            android:background="@color/colorBack"
+            app:refreshing="@={viewModel.isRefreshing}"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:adapter="@{viewModel.adapter}"
+                app:layoutManager="@{viewModel.manager}" />
+        </android.support.v4.widget.SwipeRefreshLayout>
     </RelativeLayout>
 
 </layout>

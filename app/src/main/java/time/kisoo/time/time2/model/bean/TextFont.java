@@ -8,6 +8,7 @@ import cn.bmob.v3.datatype.BmobFile;
  */
 
 public class TextFont extends BmobObject {
+    private BmobFile sample;
     private String fontName;//font name
     private BmobFile fontFile;//font file
     private String fileSize;//file size
@@ -15,6 +16,14 @@ public class TextFont extends BmobObject {
 
     public String getFontName() {
         return fontName;
+    }
+
+    public BmobFile getSample() {
+        return sample;
+    }
+
+    public void setSample(BmobFile sample) {
+        this.sample = sample;
     }
 
     public void setFontName(String fontName) {

@@ -2,7 +2,9 @@ package time.kisoo.time.time2.app;
 
 import android.app.Application;
 
+import cn.bmob.v3.Bmob;
 import cn.mycommons.androidsizeutil.AndroidSizeUtil;
+import time.kisoo.time.time2.common.config.Constant;
 import time.kisoo.time.time2.dagger2.component.AppComponent;
 import time.kisoo.time.time2.dagger2.component.DaggerAppComponent;
 import time.kisoo.time.time2.util.SpUtil;
@@ -22,6 +24,7 @@ public class App extends Application {
         SpUtil.init(this);
         AndroidSizeUtil.init(this);
         ToastUtil.init(this);
+        Bmob.initialize(this, Constant.BMOB_ID);
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();

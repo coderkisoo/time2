@@ -6,7 +6,7 @@
     <data class="MainActivityBinding">
 
         <import type="time.kisoo.time.time2.viewmodel.activity.MainActivityVM" />
-
+        <import type="android.databinding.ObservableMap&lt;String,Object&gt;" />
         <variable
             name="viewModel"
             type="MainActivityVM" />

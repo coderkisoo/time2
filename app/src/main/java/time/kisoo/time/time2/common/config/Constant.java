@@ -28,4 +28,7 @@ public class Constant {
 //    public static final int TYPE_DOWNLOADING = 4;//正在下载
     public static final int TYPE_PREDOWNLOAD = 5;//准备下载
 
+
+    public static final String BMOB_ID = "e42a7e4b7ae1cb12792b51bb3a755836";
+
 }

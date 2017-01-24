@@ -19,7 +19,7 @@
         android:layout_height="@dimen/dp_128"
         android:background="?android:attr/selectableItemBackground"
         android:onClick="@{theView->viewModel.onClickText(theView)}"
-        bind:panel_src="@mipmap/font_sample" />
+        app:panel="@{viewModel.panelSrc}" />
     <!--bind:OnClickListener="@{viewModel.listener}"-->
 
     <!--bind:panel_color="@color/colorYellow"-->
