@@ -30,6 +30,8 @@
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".view.activity.FontDetailActivity"/>
+        <service android:name=".view.service.DownloadService"/>
     </application>
 
 </manifest>

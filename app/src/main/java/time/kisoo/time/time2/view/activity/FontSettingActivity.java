@@ -36,7 +36,6 @@ public class FontSettingActivity extends BaseActivity<FontSettingActivityBinding
                 .builder()
                 .appComponent(((App) getApplication()).component())
                 .fontSettingActivityModule(new FontSettingActivityModule(this))
-//                .fontListLayoutModule(new FontListLayoutModule(this))
                 .build()
                 .inject(this);
     }
@@ -46,12 +45,6 @@ public class FontSettingActivity extends BaseActivity<FontSettingActivityBinding
         super.bindView();
         binding.setViewModel(viewModel);
         viewModel.refresh();
-//        viewModel.refresh();
-//        binding.vsLoading.setOnInflateListener((viewStub, view) -> {
-//            FontListLayoutBinding fontListLayoutBinding = DataBindingUtil.bind(view);
-//            fontListLayoutBinding.setViewModel(fontListLayoutVM);
-//        });
-
     }
 
 

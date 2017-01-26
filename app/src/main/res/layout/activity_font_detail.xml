@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/tools">
+
+    <data class="FontDetailActivityBinding">
+
+        <variable
+            name="viewModel"
+            type="time.kisoo.time.time2.viewmodel.activity.FontDetailActivityVM" />
+
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/rl_toolbar"
+            layout="@layout/back_toolbar"
+            bind:title="@{viewModel.title}" />
+
+        <ImageView
+            android:id="@+id/iv_sample"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_80"
+            android:layout_below="@+id/rl_toolbar"
+            android:padding="@dimen/dp_8"
+            app:imgUrl="@{viewModel.mFont.getSample().getUrl()}" />
+
+        <TextView
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/iv_sample"
+            android:layout_marginRight="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_8"
+            android:background="@drawable/textview_back"
+            android:gravity="center"
+            android:padding="@dimen/dp_4"
+            android:onClick="@{viewModel.downLoad}"
+            android:text="@string/download"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_sample"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_8"
+            android:gravity="center"
+            android:text="@{viewModel.mSize}"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/sp_14" />
+        <com.github.clans.fab.FloatingActionMenu
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bind:menu_colorNormal="@color/colorPrimary"
+            android:id="@+id/fam_menu"
+            bind:menu_icon="@mipmap/icon_font">
+
+        </com.github.clans.fab.FloatingActionMenu>
+    </RelativeLayout>
+
+</layout>

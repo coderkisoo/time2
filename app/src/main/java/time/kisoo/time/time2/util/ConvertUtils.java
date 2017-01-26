@@ -18,6 +18,7 @@ import com.kisoo.downloadview.DownloadView;
 import java.util.concurrent.ExecutionException;
 
 import cn.bmob.v3.datatype.BmobFile;
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -40,30 +41,31 @@ public final class ConvertUtils {
         Glide.with(view.getContext()).load(imageUrl).into(view);
     }
 
+    @BindingAdapter({"imgUrl"})
+    public static void loadImage(ImageView view, String url) {
+        Glide.with(view.getContext()).load(url).into(view);
+    }
 
     @BindingAdapter({"panel"})
     public static void loadPanel(DownloadView view, BmobFile sample) {
-        rx.Observable.create(new rx.Observable.OnSubscribe<BmobFile>() {
-            @Override
-            public void call(Subscriber<? super BmobFile> subscriber) {
-                subscriber.onNext(sample);
-            }
-        })
+        Observable
+                .create(new Observable.OnSubscribe<BmobFile>() {
+                    @Override
+                    public void call(Subscriber<? super BmobFile> subscriber) {
+                        subscriber.onNext(sample);
+                    }
+                })
                 .map(bmobFile -> {
                     try {
                         return Glide.with(view.getContext()).load(sample.getUrl()).asBitmap().into(view.getPanelWidth(), view.getPanelHeight()).get();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
+                    } catch (InterruptedException | ExecutionException e) {
                         e.printStackTrace();
                     }
                     return null;
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(bitmap -> {
-                    view.setPanelSrc(bitmap);
-                });
+                .subscribe(view::setPanelSrc);
 
     }
 

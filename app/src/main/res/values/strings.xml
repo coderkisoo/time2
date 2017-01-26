@@ -19,5 +19,11 @@
     <string name="item_font">字体设置</string>
     <string name="description_update">是否开启更新，建议开启</string>
     <string name="description_default_font">默认字体</string>
+    <string name="download">下载</string>
+    <string name="size">文件大小： </string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="title">提示:</string>
+    <string name="if_download">确认要下载吗？</string>
 
 </resources>

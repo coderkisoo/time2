@@ -43,35 +43,33 @@ public class FontSettingActivityVM extends BaseViewModel {
         this.list = new ArrayList<>();
         this.adapter = new FontSettingAdapter(list);
         this.manager = new LinearLayoutManager(context);
-        this.onRefreshListener = () ->
-                new BmobQuery<TextFont>()
-                        .findObjectsObservable(TextFont.class)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(new Subscriber<List<TextFont>>() {
-                            @Override
-                            public void onCompleted() {
-                                adapter.notifyDataSetChanged();
-                                isRefreshing.set(false);
-                            }
+        this.onRefreshListener = () -> new BmobQuery<TextFont>()
+                .findObjectsObservable(TextFont.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber<List<TextFont>>() {
+                    @Override
+                    public void onCompleted() {
+                        adapter.notifyDataSetChanged();
+                        isRefreshing.set(false);
+                    }
 
-                            @Override
-                            public void onError(Throwable throwable) {
-                                Log.e(FontSettingActivityVM.this.context.TAG, throwable.getMessage());
-                                isRefreshing.set(false);
-                            }
+                    @Override
+                    public void onError(Throwable throwable) {
+                        Log.e(FontSettingActivityVM.this.context.TAG, throwable.getMessage());
+                        isRefreshing.set(false);
+                    }
 
-                            @Override
-                            public void onNext(List<TextFont> textFonts) {
-                                list.clear();
-                                for (TextFont font : textFonts) {
-                                    ItemPreDownloadVM vm = new ItemPreDownloadVM();
-                                    vm.fileSize = font.getFileSize();
-                                    vm.panelSrc = font.getSample();
-                                    list.add(vm);
-                                }
-                            }
-                        });
+                    @Override
+                    public void onNext(List<TextFont> textFonts) {
+                        list.clear();
+                        for (TextFont font : textFonts) {
+                            ItemPreDownloadVM vm = new ItemPreDownloadVM(context);
+                            vm.setFont(font);
+                            list.add(vm);
+                        }
+                    }
+                });
     }
 
 

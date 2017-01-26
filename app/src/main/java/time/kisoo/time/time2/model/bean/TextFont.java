@@ -7,7 +7,7 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by KiSoo on 2016/11/17.
  */
 
-public class TextFont extends BmobObject {
+public class TextFont extends BmobObject{
     private BmobFile sample;
     private String fontName;//font name
     private BmobFile fontFile;//font file

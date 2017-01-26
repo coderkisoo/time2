@@ -11,7 +11,6 @@ import java.util.List;
 import time.kisoo.time.time2.view.adapter.FontSettingAdapter;
 import time.kisoo.time.time2.viewmodel.BaseViewModel;
 import time.kisoo.time.time2.viewmodel.adapter.BaseItemSettingVM;
-import time.kisoo.time.time2.viewmodel.adapter.itemfont.ItemPreDownloadVM;
 
 /**
  * Created by kangqizhou on 2017/1/23.
@@ -27,19 +26,9 @@ public class FontListLayoutVM extends BaseViewModel {
 
     private List<BaseItemSettingVM> list;
     public FontListLayoutVM(Context context) {
-
         this.list = new ArrayList<>();
-        initList();
         this.adapter = new FontSettingAdapter(list);
         this.manager = new LinearLayoutManager(context);
     }
 
-    private void initList() {
-        list.add(new ItemPreDownloadVM());
-        list.add(new ItemPreDownloadVM());
-        list.add(new ItemPreDownloadVM());
-        list.add(new ItemPreDownloadVM());
-        list.add(new ItemPreDownloadVM());
-        list.add(new ItemPreDownloadVM());
-    }
 }

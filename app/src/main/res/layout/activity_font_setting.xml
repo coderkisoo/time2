@@ -18,12 +18,6 @@
             android:id="@+id/rl_toolbar"
             layout="@layout/back_toolbar"
             bind:title="@{viewModel.title}" />
-        <!--<ViewStub-->
-        <!--android:id="@+id/vs_loading"-->
-        <!--android:layout_below="@id/rl_toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout="@layout/layout_font_list"/>-->
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/srl_refresh"
             android:layout_width="match_parent"

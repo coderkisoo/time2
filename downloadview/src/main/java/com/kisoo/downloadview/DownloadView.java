@@ -21,12 +21,14 @@ public class DownloadView extends View {
 
     private int mColor;
     private int mProgress;
-    private int circleWidth = 30;//绳子圆环的宽度
-    private int circleHeight = 50;//绳子圆环的宽度
-    private int WOODEN_PAINT_WIDTH = 8;//绳子圆环的宽度
-    private int PANEL_SRC_HEIGHT = 64 * 2;
+    private static final int circleWidth = 30;//绳子圆环的宽度
+    private static final int circleHeight = 50;//绳子圆环的高度
+    private static final int WOODEN_PAINT_WIDTH = 8;//绳子的粗度
+    private static final int SHOW_PANEL = 0;//详情页的页面
+
+    private int PANEL_SRC_HEIGHT = 56 * 2;
     private int PADDING = 24;
-    private int PICTURE_PADDING = PADDING + 64;
+    private int PICTURE_PADDING = PADDING + 56;
 
     private int WOODEN_ROCK_HEIGHT = 32;
     private int woodenDistance = 15;
@@ -57,7 +59,6 @@ public class DownloadView extends View {
             BitmapDrawable bitmapDrawable = (BitmapDrawable) ta.getDrawable(R.styleable.DownloadView_panel_src);
             if (null != bitmapDrawable) {
                 panelSrc = bitmapDrawable.getBitmap();
-
             }
             initPaints();
         } finally {
@@ -172,7 +173,7 @@ public class DownloadView extends View {
         drawPanel(canvas, PADDING, mSpaceHeight, canvas.getWidth() - PADDING, canvas.getHeight() - mSpaceHeight, 12, mPanelBackPaint);
         if (panelSrc != null)
             canvas.drawBitmap(panelSrc, null,
-                    new RectF(PICTURE_PADDING, mSpaceHeight + 64, canvas.getWidth() - PICTURE_PADDING, canvas.getHeight() - mSpaceHeight - 64),
+                    new RectF(PICTURE_PADDING, mSpaceHeight + 56, canvas.getWidth() - PICTURE_PADDING, canvas.getHeight() - mSpaceHeight - 56),
                     mPanelSrcPaint);
         //画绳圈
         drawCircleWithX(canvas, circleWidth, circleHeight, positionX1, (int) mSpaceHeight, mWoodenPaint, true);
