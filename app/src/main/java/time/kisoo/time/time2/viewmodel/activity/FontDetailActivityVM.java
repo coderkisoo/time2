@@ -39,7 +39,6 @@ public class FontDetailActivityVM extends BaseViewModel {
         this.mSize = context.getResources().getString(R.string.size) + mFont.getFileSize();
     }
 
-    @Bindable
     public void downLoad(View view) {
         DialogUtil.showDialog(mContext.getString(R.string.title),
                 mContext.getString(R.string.if_download),

@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import time.kisoo.time.time2.app.App;
+
 /**
  * Created by KiSoo on 2016/11/1.
  */
@@ -30,6 +32,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
+        App.getInstance().addActivity(context);
         initModelWithDagger2();
         bindView();
     }
@@ -88,5 +91,9 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         startActivity(intent);
     }
 
-
+    @Override
+    public void finish() {
+        super.finish();
+        App.getInstance().removeActivity(context);
+    }
 }

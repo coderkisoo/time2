@@ -14,13 +14,11 @@ import time.kisoo.time.time2.util.FileUtil;
  */
 
 public class DownloadService extends IntentService {
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     * @param name Used to name the worker thread, important only for debugging.
-     */
-    public DownloadService(String name) {
-        super(name);
+
+
+
+    public DownloadService() {
+        super("downloadService");
     }
 
     @Override

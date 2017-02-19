@@ -1,6 +1,9 @@
 package time.kisoo.time.time2.app;
 
+import android.app.Activity;
 import android.app.Application;
+
+import java.util.Stack;
 
 import cn.bmob.v3.Bmob;
 import cn.mycommons.androidsizeutil.AndroidSizeUtil;
@@ -18,10 +21,14 @@ import time.kisoo.time.time2.util.ToastUtil;
 public class App extends Application {
 
     private AppComponent appComponent;
+    private Stack<Activity> activities;
+    private static App mInstance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        mInstance = this;
+        activities = new Stack<>();
         SpUtil.init(this);
         AndroidSizeUtil.init(this);
         ToastUtil.init(this);
@@ -35,5 +42,22 @@ public class App extends Application {
 
     public AppComponent component() {
         return appComponent;
+    }
+
+    public static App getInstance() {
+        return mInstance;
+    }
+
+    public Activity getCurrentActivity() {
+        return activities.peek();
+    }
+
+    public void addActivity(Activity activity) {
+        activities.push(activity);
+    }
+
+    public void removeActivity(Activity context) {
+        if (activities.peek() == context)
+            activities.pop();
     }
 }

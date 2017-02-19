@@ -37,7 +37,7 @@ public interface IPhotoView {
      */
     boolean canZoom();
 
-    /**
+     /**
      * Gets the Display Rectangle of the currently displayed Drawable. The Rectangle is relative to
      * this View and includes all scaling and translations.
      *
